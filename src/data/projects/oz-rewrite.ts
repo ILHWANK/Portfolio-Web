@@ -114,9 +114,9 @@ const ozRewrite: ProjectData = {
           title: "Mail",
           summary: "대량 메일에서도 서버 부하를 줄이는 점진 로딩 구조",
           media: [
-            { type: "image", src: "/media/projects/oz-rewrite/mail_01.png", alt: "메일 리스트" },
-            { type: "image", src: "/media/projects/oz-rewrite/mail_02.png", alt: "스크롤 후 추가 로딩" },
-            { type: "image", src: "/media/projects/oz-rewrite/mail_03.png", alt: "보상 수령" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.mp4`, alt: "메일 리스트" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temp.png`, alt: "스크롤 후 추가 로딩" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.gif`, alt: "보상 수령" },
           ],
           points: [
             "메일 수신/정렬/보상 수령 등 메일 기능 전반 개발",
