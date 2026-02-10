@@ -92,7 +92,7 @@ const ozRewrite: ProjectData = {
           title: "Shop",
           summary: "공통 Slot + UIStyle로 다양한 재화/구매 분기 UI를 통합",
           media: [
-            { type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.mp4`, poster: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temp.png` },
+            { type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.mp4`, poster: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png` },
             // 이미지 4컷으로 바꿀 경우 예시:
             // { type: "image", src: "/media/projects/oz-rewrite/shop_01.png", alt: "상점 메인" },
             // { type: "image", src: "/media/projects/oz-rewrite/shop_02.png", alt: "상점 메인2" },
@@ -115,8 +115,8 @@ const ozRewrite: ProjectData = {
           summary: "대량 메일에서도 서버 부하를 줄이는 점진 로딩 구조",
           media: [
             { type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.mp4` },
-            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temp.png`, alt: "스크롤 후 추가 로딩" },
-            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temp.gif`, alt: "보상 수령" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png`, alt: "스크롤 후 추가 로딩" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/tempgif.gif`, alt: "보상 수령" },
           ],
           points: [
             "메일 수신/정렬/보상 수령 등 메일 기능 전반 개발",
