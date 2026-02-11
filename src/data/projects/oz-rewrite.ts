@@ -85,26 +85,25 @@ const ozRewrite: ProjectData = {
       kind: "case",
       id: "core-ui-cases",
       title: "1-1. 구현 / 개선 사례",
-      subtitle: "대표 UI 콘텐츠별 미디어(이미지/영상) + 핵심 포인트 요약",
+      subtitle: "대표 UI 콘텐츠별 미디어(이미지/영상) + 핵심 포인트",
       cards: [
         // Shop (총 4컷 이미지라고 했지만 지금은 mp4도 있어 보이니 일단 video 1개로 시작, 나중에 이미지 4개로 교체 가능)
         {
           title: "Shop",
           summary: "공통 Slot + UIStyle로 다양한 재화/구매 분기 UI를 통합",
           media: [
-            { type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.mp4`, poster: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png` },
-            // 이미지 4컷으로 바꿀 경우 예시:
-            // { type: "image", src: "/media/projects/oz-rewrite/shop_01.png", alt: "상점 메인" },
-            // { type: "image", src: "/media/projects/oz-rewrite/shop_02.png", alt: "상점 메인2" },
-            // { type: "image", src: "/media/projects/oz-rewrite/shop_03.png", alt: "구매 방식 전환" },
-            // { type: "image", src: "/media/projects/oz-rewrite/shop_04.png", alt: "제한 수량 구매" },
+            //{ type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.mp4`, poster: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png` },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png`, alt: "상점 메인" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png`, alt: "상점 메인2" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png`, alt: "구매 방식 전환" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png`, alt: "제한 수량 구매" },
           ],
           points: [
             "UIStyle 개념으로 공통 Slot Prefab 구조화(표현 차이만 분리)",
             "일괄/개별/제한 수량 구매 등 분기 지원 + 소모 재화 변경 대응",
             "재화 추가에도 최소 수정으로 확장 가능하도록 Prefab/코드 설계",
             "구매 확인/결과/경고 등 구매 관련 팝업 UI 전반 개발",
-            "구조 재사용으로 이후 ‘왕국 자판기’ 콘텐츠를 빠르게 구현",
+            "구조 재사용으로 이후 ‘왕국 자판기’ 콘텐츠를 빠르게 구현 이과정 에서 상점 관련 Prefab(Addressables) 및 Code(Assembly) Common 공요화 작업",
           ],
           notionHref: "#",
         },
@@ -114,7 +113,7 @@ const ozRewrite: ProjectData = {
           title: "Mail",
           summary: "대량 메일에서도 서버 부하를 줄이는 점진 로딩 구조",
           media: [
-            { type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.mp4` },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/shop.mp4`, alt: "스크롤 후 추가 로딩" },
             { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png`, alt: "스크롤 후 추가 로딩" },
             { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/tempgif.gif`, alt: "보상 수령" },
           ],
@@ -122,6 +121,7 @@ const ozRewrite: ProjectData = {
             "메일 수신/정렬/보상 수령 등 메일 기능 전반 개발",
             "전량 1회 수신 방식의 서버 부하 이슈를 점진 로딩으로 개선",
             "예: 50개 단위 요청 → 40개 열람 시 51~100 추가 요청",
+            "소켓(TCP) 통신 과정에서 발생하는 딜레이를 유저가 최대한 적게 느끼도록 10개 정도 여유를 두고 Request 를 요청",
           ],
           notionHref: "#",
         },
@@ -131,10 +131,10 @@ const ozRewrite: ProjectData = {
           title: "Friend",
           summary: "확장(지원 영웅) 대비 진입 구조 + 테스트 효율 개선",
           media: [
-            { type: "image", src: "/media/projects/oz-rewrite/friend_01.png", alt: "친구 메인" },
-            { type: "image", src: "/media/projects/oz-rewrite/friend_02.png", alt: "친구 메인2" },
-            { type: "image", src: "/media/projects/oz-rewrite/friend_03.png", alt: "등록/검색" },
-            { type: "image", src: "/media/projects/oz-rewrite/friend_04.png", alt: "Info Popup" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png`, alt: "친구 메인" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/tempgif.gif`, alt: "친구 메인2" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/temppng.png`, alt: "등록/검색" },
+            { type: "image", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/tempgif.gif`, alt: "Info Popup" },
           ],
           points: [
             "추후 ‘지원 영웅’ 기능을 고려해 Panel 진입점/기본 구조 선구축",
@@ -242,12 +242,12 @@ const ozRewrite: ProjectData = {
       kind: "case",
       id: "event-minigame-cases",
       title: "2-1. 미니게임 3종",
-      subtitle: "이 섹션은 영상 중심(이미지 최소화)",
+      subtitle: "이 섹션은 미니게임 영상 + 핵심 포인트",
       cards: [
         {
           title: "술래 찾기",
           summary: "Factory/Strategy/State로 생성·행동을 분리해 확장 가능한 구조",
-          media: [{ type: "video", src: "/media/projects/oz-rewrite/05_tag_game.mp4", poster: "/media/projects/oz-rewrite/poster_tag.png" }],
+          media: [{ type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/taggerfind.mp4`, poster: "/media/projects/oz-rewrite/poster_tag.png" }],
           points: [
             "SD 캐릭터 Factory 생성(상태/데이터에 따라 사이즈/속도/대사/오브젝트 등 변형)",
             "술래/일반 행동 차이를 Strategy로 분리",
@@ -259,7 +259,7 @@ const ozRewrite: ProjectData = {
         {
           title: "타일 깨기",
           summary: "획득·파괴·발견·라운드 전환까지 UI/로직을 신규 구현",
-          media: [{ type: "video", src: "/media/projects/oz-rewrite/06_tile_break.mp4", poster: "/media/projects/oz-rewrite/poster_tile.png" }],
+          media: [{ type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/tilebreak.mp4`, poster: "/media/projects/oz-rewrite/poster_tile.png" }],
           points: [
             "이벤트 재화로 타일 획득/파괴, 아이템 발견 단계별 연출",
             "NPC 대사/라운드 전환/폭탄 다중 파괴 기능",
@@ -270,7 +270,7 @@ const ozRewrite: ProjectData = {
         {
           title: "영웅 투표",
           summary: "보상/연출 분기 + 라운드 종료 연출까지 포함한 이벤트 구조",
-          media: [{ type: "video", src: "/media/projects/oz-rewrite/07_vote.mp4", poster: "/media/projects/oz-rewrite/poster_vote.png" }],
+          media: [{ type: "video", src: `${import.meta.env.BASE_URL}media/projects/oz-rewrite/vote.mp4`, poster: "/media/projects/oz-rewrite/poster_vote.png" }],
           points: [
             "기존 메인 패널 기반으로 보상 정보 팝업/관련 UI 추가",
             "투표 시 캐릭터 투표 연출 적용 + 재화 상태에 따른 분기",
