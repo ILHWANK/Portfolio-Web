@@ -2,6 +2,6 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
     site: "https://ilhwank.github.io",
-    base: "/portfolio-web/",
+    base: "/Portfolio-Web/",
     trailingSlash: "always",
 });
