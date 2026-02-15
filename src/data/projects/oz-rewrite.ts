@@ -164,10 +164,10 @@ const ozRewrite: ProjectData = {
                     title: "Inventory",
                     summary: "기간성 아이템/만료 처리 등 운영 이슈를 구조적으로 반영",
                     media: [
-                        {type: "image", src: `${IMG}/inv_01.jpg`, alt: "인벤토리 메인"},
-                        {type: "image", src: `${IMG}/inv_02.jpg`, alt: "바로가기/획득 경로"},
-                        {type: "image", src: `${IMG}/inv_03.jpg`, alt: "확률 띠지"},
-                        {type: "image", src: `${IMG}/inv_04.jpg`, alt: "기간/만료 안내"},
+                        {type: "image", src: `${IMG}/inventory_main.jpg`, alt: "인벤토리 메인"},
+                        {type: "image", src: `${IMG}/inventory_sub1.jpg`, alt: "바로가기/획득 경로"},
+                        {type: "image", src: `${IMG}/inventory_sub2.jpg`, alt: "안내 메시지"},
+                        {type: "image", src: `${IMG}/inventory_shortcut.jpg`, alt: "바로가기 이동"},
                     ],
                     points: [
                         "창고(인벤토리) 기본 기능 개발 + UI 리뉴얼 대응",
