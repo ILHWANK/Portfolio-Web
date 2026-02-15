@@ -1,5 +1,6 @@
 ---
 import FeatureCard from "./FeatureCard.astro";
+import { marked } from "marked";
 const { section } = Astro.props;
 ---
 
@@ -9,7 +10,7 @@ const { section } = Astro.props;
 
     {section.kind === "bullets" ? (
             <ul class="list">
-                {(section.bullets ?? []).map((b) => <li>{b}</li>)}
+                {(section.bullets ?? []).map((b) => <li set:html={marked.parseInline(b)} />)}
             </ul>
     ) : (
             <div class="cardGrid">
