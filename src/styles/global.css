@@ -224,6 +224,16 @@ a {
         margin: 6px 0;
     }
 
+    .list a {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+        .list a:hover {
+            opacity: 0.9;
+        }
+
+
 .ps__grid {
     display: grid;
     gap: 12px;
