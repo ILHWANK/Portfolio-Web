@@ -1,6 +1,6 @@
 import type { ProjectData } from "./types";
 
-const ROOT = `${import.meta.env.BASE_URL}media/projects/oz-rewrite`;
+const ROOT = `/media/projects/oz-rewrite`;
 const IMG = `${ROOT}/image`;
 const VID = `${ROOT}/video`;
 

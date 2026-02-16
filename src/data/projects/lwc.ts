@@ -1,6 +1,6 @@
 import type { ProjectData } from "./types";
 
-const ROOT = `${import.meta.env.BASE_URL}media/projects/lwc`;
+const ROOT = `/media/projects/lwc`;
 const IMG = `${ROOT}/image`;
 const VID = `${ROOT}/video`;
 
