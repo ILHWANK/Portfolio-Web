@@ -7,9 +7,10 @@ const VID = `${ROOT}/video`;
 const lwc: ProjectData = {
     slug: "lwc",
     title: "편지와 마녀의 아이 (Letters and the Witch’s Child)",
+    notionLabel: "상세 코드(Notion)",
     tagline: "스토리 중심 2D 싱글 플레이 (Unity 2023.2.20)",
     thumb: {
-        src: `${IMG}/thumbnail.jpg`,
+        src: `${IMG}/lwc.png`,
         alt: "편지와 마녀의 아이 썸네일",
     },
 
@@ -21,8 +22,11 @@ const lwc: ProjectData = {
         "Unity",
         "UGUI",
         "Addressables",
+        "Assembly",
         "UniTask",
         "Yarn Spinner",
+        "TextMeshPro",
+        "LoopScrollRect",
         "CSV",
         "Localization",
     ],
@@ -98,7 +102,10 @@ const lwc: ProjectData = {
                         "저장은 ThreadPool에서 파일 IO 처리(메인 스레드 부담 최소화)",
                         "관련: TitleUIController / LoadingUIController / GameDataManager / GameData",
                     ],
-                    notionHref: "#",
+                    notionHref: "#https://www.notion.so/Project-LWC-2026-01-27-2ce7c7e6db098009a8b4c7b579e4f103?source=copy_link#2d37c7e6db09807d8f9de76ae32e44a7",
+                    links: [
+                        { label: "관련 코드(Notion)", href: "#https://www.notion.so/Project-LWC-2026-01-27-2ce7c7e6db098009a8b4c7b579e4f103?source=copy_link#2d37c7e6db09807d8f9de76ae32e44a7", kind: "code" }
+                    ],
                 },
 
                 {

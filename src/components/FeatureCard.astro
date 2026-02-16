@@ -4,6 +4,7 @@ const { card } = Astro.props;
 const media = card?.media ?? [];
 const hasMedia = media.length > 0;
 const isCarousel = media.length > 1;
+const notionLabel = project?.notionLabel ?? "상세 정보(Notion)";
 ---
 
 <article class="fc">
@@ -203,10 +204,18 @@ const isCarousel = media.length > 1;
                         </>
                 ) : null}
 
-                {card?.notionHref ? (
-                        <a class="fc__link" href={card.notionHref} target="_blank" rel="noreferrer">
-                            상세 보기 (Notion)
+                {card.notionHref && (
+                        <a class="chip" href={card.notionHref} target="_blank" rel="noreferrer">
+                            상세 정보(Notion)
                         </a>
+                )}
+
+                {card.links?.map((l) => (
+                        <a class="chip" href={l.href} target="_blank" rel="noreferrer" data-kind={l.kind}>
+                            {l.label}
+                        </a>
+                ))}
+
                 ) : null}
             </div>
     ) : null}

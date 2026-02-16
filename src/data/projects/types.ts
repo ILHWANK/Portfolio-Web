@@ -3,12 +3,19 @@ export type MediaItem =
     | { type: "gif"; src: string; alt: string }
     | { type: "video"; src: string; poster?: string };
 
+export type CardLink = {
+    label: string;           // 버튼에 보일 텍스트
+    href: string;            // 링크
+    kind?: "code" | "doc" | "issue" | "etc"; // 선택(필터/스타일용)
+};
+
 export type FeatureCard = {
     title: string;
     summary: string;
     media?: MediaItem[];
     points?: string[];
     notionHref?: string;
+    links?: CardLink[];
 };
 
 export type CaseSection = {
@@ -41,9 +48,7 @@ export type ProjectData = {
     description?: string;
     tags?: string[];
     primaryMedia?: MediaItem;
-
-    // ✅ 홈 카드 썸네일
     thumb?: ProjectThumb;
-
     sections: ProjectSection[];
+    notionLabel?: string;
 };
