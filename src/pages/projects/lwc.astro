@@ -8,12 +8,7 @@ const p = lwc;
 ---
 
 <ProjectLayout title={`프로젝트 | ${p.title}`} description={p.tagline}>
-    <ProjectHero
-            title={p.title}
-            subtitle={p.tagline}
-            hero={p.hero}
-            techStack={p.tags}
-    />
+    <ProjectHero project={p} />
 
     {p.sections.map((s) => <Section section={s} />)}
 </ProjectLayout>

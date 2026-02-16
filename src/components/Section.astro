@@ -1,7 +1,9 @@
 ---
 import FeatureCard from "./FeatureCard.astro";
 import { marked } from "marked";
-const { section, project } = Astro.props;
+import type { ProjectSection } from "../data/projects/types"; // 경로 조정
+
+const { section } = Astro.props as { section: ProjectSection };
 ---
 
 <section class="section" id={section.id}>

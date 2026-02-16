@@ -1,35 +1,43 @@
 ---
 import TagList from "./TagList.astro";
+import type { ProjectData } from "../data/projects/types"; // 경로는 네 프로젝트에 맞게 조정
+
+const { project } = Astro.props as { project: ProjectData };
 
 const {
     title,
-    subtitle,
-    period,
-    roleSummary,
-    techStack,
-    hero,
-} = Astro.props;
+    tagline,
+    headline,
+    description,
+    tags,
+    thumb,
+    notionLabel,
+} = project;
 
-const headline = hero?.headline ?? "";
-const subline = hero?.subline ?? "";
+const notionText = notionLabel ?? "상세 정보(Notion)";
 ---
 
 <section class="hero">
     <div class="hero2 hero2--text-only">
         <div class="hero2__text">
-            {subtitle ? <p class="kicker">{subtitle}</p> : null}
+            {tagline ? <p class="kicker">{tagline}</p> : null}
             {title ? <h1 class="h1">{title}</h1> : null}
-            {period ? <p class="muted">{period}</p> : null}
 
-            {(headline || subline) ? <div class="spacer"></div> : null}
+            {(headline || description) ? <div class="spacer"></div> : null}
             {headline ? <p class="lead">{headline}</p> : null}
-            {subline ? <p class="muted">{subline}</p> : null}
+            {description ? <p class="body">{description}</p> : null}
 
-            {roleSummary ? <div class="spacer"></div> : null}
-            {roleSummary ? <p class="body">{roleSummary}</p> : null}
+            {tags?.length ? <div class="spacer"></div> : null}
+            {tags?.length ? <TagList tags={tags} /> : null}
 
-            {techStack?.length ? <div class="spacer"></div> : null}
-            {techStack?.length ? <TagList tags={techStack} /> : null}
+            {/* thumb는 “카드 썸네일”용이라 보통 상세 페이지 Hero에선 안 보여도 됨.
+          필요하면 아래 주석을 풀어서 사용 */}
+            {/* {thumb ? (
+        <>
+          <div class="spacer"></div>
+          <img class="hero__thumb" src={thumb.src} alt={thumb.alt} loading="lazy" />
+        </>
+      ) : null} */}
         </div>
     </div>
 </section>

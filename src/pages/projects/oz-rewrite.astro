@@ -2,27 +2,13 @@
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
 import ProjectHero from "../../components/ProjectHero.astro";
 import Section from "../../components/Section.astro";
-import Carousel from "../../components/Carousel.astro";
 import ozRewrite from "../../data/projects/oz-rewrite";
 
 const p = ozRewrite;
-
-const mainMedia = [
-    { type: "image", src: "/media/projects/oz-rewrite/Temp.png", alt: "임시 이미지" },
-    { type: "gif", src: "/media/projects/oz-rewrite/Temp.gif", alt: "임시 GIF" },
-    { type: "video", src: "/media/projects/oz-rewrite/shop.mp4", poster: "/media/projects/oz-rewrite/Temp.png" },
-];
 ---
 
-<ProjectLayout title={`프로젝트 | ${p.title}`} description={p.subtitle}>
-    <ProjectHero
-            title={p.title}
-            subtitle={p.subtitle}
-            period={p.period}
-            roleSummary={p.roleSummary}
-            techStack={p.techStack}
-            hero={p.hero}
-    />
+<ProjectLayout title={`프로젝트 | ${p.title}`} description={p.tagline}>
+    <ProjectHero project={p} />
 
     {p.sections.map((s) => <Section section={s} />)}
 </ProjectLayout>
