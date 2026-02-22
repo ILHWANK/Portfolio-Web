@@ -146,8 +146,8 @@ a {
 }
 
 .card__thumb {
-    width: 140px;
-    height: 80px;
+    width: 160px;
+    height: 100px;
     object-fit: cover;
     border-radius: 12px;
     border: 1px solid var(--line);
@@ -156,7 +156,7 @@ a {
 .card__body {
     display: flex;
     flex-direction: column;
-/*    gap: 6px;*/
+    gap: 20px;
 }
 
 .tags {
