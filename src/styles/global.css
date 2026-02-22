@@ -131,15 +131,15 @@ a {
 
 .cards {
     display: grid;
-/*    gap: 20px;*/
+    gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .card {
     display: grid;
     grid-template-columns: 140px 1fr;
-    gap: 14px;
-    padding: 14px;
+/*    gap: 14px;*/
+/*    padding: 14px;*/
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: var(--card);
@@ -156,7 +156,7 @@ a {
 .card__body {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+/*    gap: 6px;*/
 }
 
 .tags {
