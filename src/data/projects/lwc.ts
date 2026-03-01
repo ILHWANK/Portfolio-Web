@@ -8,15 +8,17 @@ const lwc: ProjectData = {
     slug: "lwc",
     title: "편지와 마녀의 아이 (개인 프로젝트)",
     notionLabel: "상세 코드(Notion)",
-    tagline: "플레이 흐름 기반 구조 · 데이터/이벤트 중심 운영 · 스토리 표출 계층 분리",
+    tagline: "Manager 기반 Core System과 Addressables·비동기 흐름을 직접 설계하고 검증한 Unity 개인 프로젝트",
     thumb: {
         src: `${IMG}/lwc.png`,
         alt: "편지와 마녀의 아이 썸네일",
     },
 
-    headline: "스토리 중심 게임에서 UI·데이터·연출 흐름을 구조적으로 유지하기 위한 개인 프로젝트",
+    headline: "Manager 기반 Core System과 데이터 중심 구조를 처음부터 설계하고 검증한 Unity 프로젝트",
     description:
-        "Title→로딩/페이드→맵/상호작용→대화/스토리→날짜/루틴→UI 갱신까지 실제 플레이 순서로 시스템을 연결했습니다. GameData + CSV Table + MessageSystem으로 “데이터 변경→이벤트→UI/표출 반영” 규칙을 통일했고, Dialogue(Yarn)와 StoryCut(테이블 기반 컷) 모두 진행 제어와 표시(View)를 분리해 확장 가능하게 설계했습니다.",
+        "개인 프로젝트 편지와 마녀의 아이(Letters and the Witch’s Child) 는 UI·리소스·데이터·스토리 시스템을 Manager 기반 Core System 구조로 직접 설계하고 검증하기 위해 진행한 프로젝트입니다.\n" +
+        "UIManager, ResourceManager, TableManager, LocalizationManager 등 공통 시스템을 API 형태로 구성하여 기능들이 일관된 방식으로 동작하도록 설계했습니다.\n" +
+        "Addressables 기반 리소스 관리와 UniTask 기반 비동기 흐름을 통해 확장 가능한 구조를 검증했습니다.",
     tags: [
         "Unity",
         "C#",
@@ -30,6 +32,19 @@ const lwc: ProjectData = {
     ],
 
     sections: [
+        {
+            kind: "bullets",
+            id: "role-overview",
+            lead: "프로젝트에서 직접 설계하고 구현한 핵심 시스템을 요약했습니다.",
+            title: "설계 및 구현 범위",
+            bullets: [
+                "UIManager, ResourceManager, TableManager, LocalizationManager 등 Manager 기반 Core System 직접 설계 및 구현",
+                "UI 열기, 리소스 로드, 데이터 조회를 일관된 방식으로 호출할 수 있는 API 형태 구조 설계",
+                "Addressables 기반 로드·캐시·해제 흐름과 UniTask 기반 비동기 구조 설계",
+                "CSV 기반 데이터 구조와 Story 시스템 설계로 코드 수정 없이 콘텐츠 확장 가능하도록 구성",
+                "개인 프로젝트 전반 기획·구현·구조 설계를 단독으로 수행",
+            ],
+        },
         // -----------------------------
         // 0. 프로젝트 요약
         // -----------------------------
@@ -39,7 +54,7 @@ const lwc: ProjectData = {
             title: "0. 프로젝트 요약",
             lead: "개인 프로젝트로서 ‘구조 유지’와 ‘확장 가능성’을 플레이 흐름 안에서 검증하고 있습니다.",
             bullets: [
-                "최종 개선일: 2026.01.27",
+                "최종 개선일: 2026.02.04",
                 "스토리 중심 2D 싱글 플레이 게임(PC) / Unity 2023.2.20",
                 "플레이 흐름(Title→로딩→허브→상호작용→맵 전환→날짜/루틴→갱신)을 기준으로 시스템을 연결",
                 "데이터/이벤트 중심 운영(GameData + CSV Table + MessageSystem)으로 변경 반영 규칙을 통일",
