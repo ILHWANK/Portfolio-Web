@@ -7,14 +7,15 @@ const VID = `${ROOT}/video`;
 const ozRewrite: ProjectData = {
     slug: "oz-rewrite",
     title: "OZ:Rewrite (실무 프로젝트)",
-    tagline: "UI 설계·콘텐츠 개발·구조 개선을 중심으로 한 Unity 클라이언트 개발 경험",
+    tagline: "라이브 서비스에서 확장 가능한 UI·리소스·비동기 흐름을 '시스템 단위'로 구조화하고 운영한 Unity 클라이언트 개발 경험",
     thumb: {
         src: `${IMG}/ozrewrite.jpg`,
         alt: "OZ:Rewrite 썸네일",
     },
-    headline: "Unity 기반 게임 시스템 설계와 구조 개선 사례를 미디어 중심으로 정리",
+    headline: "Unity 기반 게임 시스템 설계와 구조 개선 사례를 미디어 중심으로 정리 (실무 프로젝트 특성상 소스 코드는 제외했으며, 시스템 동작과 플레이 흐름은 미디어 중심으로 정리했습니다.)",
     description:
-        "상점·친구·메일·미션·인벤토리 등 핵심 콘텐츠 시스템을 설계·구현하고, 기획 변경과 구조 개편 과정에서 재사용 가능한 구조로 개선했습니다. Addressables 기반 리소스 관리와 성능 개선 작업도 함께 진행했습니다.",
+        "상점·친구·메일·미션·인벤토리 등 핵심 콘텐츠 시스템을 설계·구현하고, 기획 변경과 구조 개편 과정에서 재사용 가능한 구조로 개선했습니다. Addressables 기반 리소스 관리와 성능 개선 작업도 함께 진행했습니다.\n\n" +
+        "※ 본 페이지의 일부 영상은 내부 개발 과정에서 기록한 자료를 기반으로 제작되었습니다. 보안 및 저작권을 고려하여 외부 미공개 요소는 편집했으며, 사운드를 제거한 버전을 사용했습니다.",
     tags: [
         "Unity",
         "C#",
@@ -35,10 +36,13 @@ const ozRewrite: ProjectData = {
             lead: "프로젝트 내 기여 범위와 대표 역할을 요약했습니다.",
             title: "담당 영역 및 기여 내용",
             bullets: [
-                "상점/친구/메일/창고(인벤토리)/미션 등 라이브 서비스 핵심 UI 콘텐츠 전반 설계·구현",
-                "재화 추가·구매 방식 변경·UI 개편 등 반복 변경을 흡수할 수 있도록 재사용 가능한 UI 구조 설계",
-                "Addressables 기반 로드/캐시/해제 흐름 운영 및 UI 전환/비동기 로딩 흐름 개선",
-                "라이브 서비스 운영 이슈 대응 및 구조 개선(성능/메모리/UX 관점 포함)",
+                "상점, 친구, 메일, 창고(인벤토리), 미션 등 라이브 서비스 핵심 UI 콘텐츠 전반 설계·구현",
+                "재화 추가, 구매 방식 변경, UI 개편 등 반복 변경을 흡수할 수 있도록 공통 진입 구조와 재사용 가능한 UI 구조 설계",
+                "Addressables 기반 로드/캐시/해제 흐름을 운영하며 UI 전환 및 비동기 로딩 구조 개선",
+                "UIStyle, Slot, Popup 구조를 기반으로 콘텐츠 확장이 가능한 공통 API 형태의 UI 구조 활용",
+                "CustomEditor 및 Inspector 확장을 통해 제작 및 테스트 효율을 개선하는 개발 툴 구현",
+                "Unity Profiler 및 Xcode Instruments 기반 성능·메모리 분석과 크로스플랫폼 안정성 개선",
+                "라이브 서비스 운영 이슈 대응 및 구조 개선 (성능/메모리/UX 관점 포함)",
             ],
         },
         // -----------------------------
@@ -51,6 +55,18 @@ const ozRewrite: ProjectData = {
             lead:
                 "라이브 서비스 환경에서 UI·연출·리소스·성능·툴링을 하나의 흐름으로 운영하며,<br/>기획 변경과 구조 변화에 대응할 수 있도록 구조화된 시스템을 설계·개발했습니다.",
             groups: [
+                {
+                    title: "[대표 적용 사례]",
+                    items: [
+                        `Addressables 기반 리소스 로드 · 캐시 · 해제 구조 설계 → <a href="#summon-overview">6. 소환 시스템 & 연출 최적화</a>`,
+                        `Addressables + ResourceManager 기반 맵 로드/해제 및 메모리 관리 개선 → <a href="#stage-overview">4. 스테이지 시스템 & 개발 툴</a>`,
+                        `LoopScrollRect 기반 대량 데이터 UI + 점진 로딩 구조 설계 → <a href="#core-ui-cases">1. 메일 시스템</a>`,
+                        `Factory · Strategy · State 패턴 기반 미니게임 구조 설계 → <a href="#event-minigame-overview">2. 이벤트용 미니게임 시스템</a>`,
+                        `Timeline + Spine Custom Track 기반 연출 시스템 구축 → <a href="#summon-overview">6. 소환 시스템 & 연출 최적화</a>`,
+                        `Unity Editor Tool 제작으로 제작 효율 개선 → <a href="#stage-overview">4. 스테이지 시스템 & 개발 툴</a>`,
+                        `CRIWARE 영상 로드/해제 최적화 및 연출 흐름 설계 → <a href="#summon-overview">6. 소환 시스템 & 연출 최적화</a>`,
+                    ],
+                },
                 {
                     title: "[UI · 콘텐츠]",
                     items: [
@@ -103,18 +119,6 @@ const ozRewrite: ProjectData = {
                         "Rider 개발 환경",
                     ],
                 },
-                {
-                    title: "[대표 적용 사례]",
-                    items: [
-                        `Addressables 기반 리소스 로드 · 캐시 · 해제 구조 설계 → <a href="#summon-overview">6. 소환 시스템 & 연출 최적화</a>`,
-                        `Addressables + ResourceManager 기반 맵 로드/해제 및 메모리 관리 개선 → <a href="#stage-overview">4. 스테이지 시스템 & 개발 툴</a>`,
-                        `LoopScrollRect 기반 대량 데이터 UI + 점진 로딩 구조 설계 → <a href="#core-ui-cases">1. 메일 시스템</a>`,
-                        `Factory · Strategy · State 패턴 기반 미니게임 구조 설계 → <a href="#event-minigame-overview">2. 이벤트용 미니게임 시스템</a>`,
-                        `Timeline + Spine Custom Track 기반 연출 시스템 구축 → <a href="#summon-overview">6. 소환 시스템 & 연출 최적화</a>`,
-                        `Unity Editor Tool 제작으로 제작 효율 개선 → <a href="#stage-overview">4. 스테이지 시스템 & 개발 툴</a>`,
-                        `CRIWARE 영상 로드/해제 최적화 및 연출 흐름 설계 → <a href="#summon-overview">6. 소환 시스템 & 연출 최적화</a>`,
-                    ],
-                },
             ],
         },
 
@@ -126,8 +130,8 @@ const ozRewrite: ProjectData = {
             id: "core-ui-overview",
             title: "1. 라이브 서비스 핵심 콘텐츠 UI 시스템",
             bullets: [
-                "담당: 핵심 UI 공통 구조(UIStyle/Slot/Popup 흐름) 설계 및 콘텐츠 확장 대응",
-                "문제: 재화/구매 방식/개편 요청이 반복되어 구조가 파편화될 위험",
+                "담당: 핵심 UI 콘텐츠를 개별 구현하는 방식이 아니라 UIStyle, Slot, Popup 구조를 공통 진입 구조(API 형태)로 설계하여 콘텐츠 확장에 대응",
+                "문제: 재화 구매 방식 처럼 개편 요청이 반복되어 구조가 파편화될 위험",
                 "목표: 유저 불편 최소화 + 변경을 흡수 가능한 재사용 구조 유지",
             ],
         },
@@ -437,7 +441,7 @@ const ozRewrite: ProjectData = {
                         "미오픈/건물 레벨 조건 추가 및 수정",
                         "스케줄 완료 연출 추가",
                     ],
-                    notionHref: "https://www.notion.so/OZ-Rewrite-2ff7c7e6db098058b74adc5226909065?source=copy_link#2ff7c7e6db09806c89e8f23ac0918e10",
+                    notionHref: "https://www.notion.so/OZ-Rewrite-2ff7c7e6db098058b74adc5226909065?source=copy_link#3017c7e6db0980a3bccdd43b7606b630",
                 },
                 {
                     title: "왕국 자판기",
@@ -451,7 +455,7 @@ const ozRewrite: ProjectData = {
                         "왕국 레벨에 따른 잠금 추가(테이블 구조 방향 협의 + 서버 조율 후 코드 반영)",
                         "UI 담당자 대신 구현 방향/수정 방법 정리 전달로 연출 적용 지원",
                     ],
-                    notionHref: "#",
+                    notionHref: "https://www.notion.so/OZ-Rewrite-2ff7c7e6db098058b74adc5226909065?source=copy_link#2ff7c7e6db0980efb5c0cf54a52bb7fd",
                 },
                 {
                     title: "왕국 정보/랭크 UI",
@@ -466,7 +470,7 @@ const ozRewrite: ProjectData = {
                         "왕국 랭크 보상 수령 중심 UI를 단계별 확인 가능하도록 개선",
                         "왕국 단계 상승을 위한 전용 팝업 추가",
                     ],
-                    notionHref: "#",
+                    notionHref: "https://www.notion.so/OZ-Rewrite-2ff7c7e6db098058b74adc5226909065?source=copy_link#2ff7c7e6db0980ca80a9d0c52bdd5b8d",
                 },
                 {
                     title: "만찬(미공개)",
@@ -476,7 +480,6 @@ const ozRewrite: ProjectData = {
                         "타이밍 맞추기 미니게임",
                         "결과 요리 생성 → 초대 영웅 선택 → 초대 연출 → 버프/호감도 적용",
                     ],
-                    notionHref: "https://www.notion.so/OZ-Rewrite-2ff7c7e6db098058b74adc5226909065?source=copy_link#2ff7c7e6db0980ca80a9d0c52bdd5b8d",
                 },
             ],
         },
@@ -595,7 +598,7 @@ const ozRewrite: ProjectData = {
             cards: [
                 {
                     title: "기본 정보",
-                    summary: "레벨/장비/등급/스킬 등 핵심 정보 구성(4컷)",
+                    summary: "레벨·장비·등급·스킬 정보를 공통 데이터 구조로 구성해 여러 콘텐츠에서 재사용 가능한 정보 UI 시스템 구축",
                     media: [
                         {type: "image", src: `${IMG}/character_equipment.jpg`, alt: "장비"},
                         {type: "image", src: `${IMG}/character_level.jpg`, alt: "레벨"},
@@ -611,7 +614,7 @@ const ozRewrite: ProjectData = {
                 },
                 {
                     title: "장비 강화",
-                    summary: "장비 강화 연출 영상",
+                    summary: "장비 성장 로직과 UI 흐름을 분리해 연출 추가와 기능 확장이 가능한 강화 시스템 구조 구현",
                     media: [{
                         type: "video",
                         src: `${VID}/character_equipment.mp4`,
@@ -626,7 +629,7 @@ const ozRewrite: ProjectData = {
                 },
                 {
                     title: "상세 정보",
-                    summary: "대표 이미지 3~4 + 상세 보기 GIF 1 (5컷)",
+                    summary: "영웅 전용 Addressables 구조를 Common 데이터 구조로 통합해 여러 UI에서 재사용 가능한 정보 시스템으로 개선",
                     media: [
                         {type: "image", src: `${IMG}/character_info2.jpg`, alt: "상세1"},
                         {type: "image", src: `${IMG}/character_info.jpg`, alt: "상세2"},
@@ -643,7 +646,7 @@ const ozRewrite: ProjectData = {
                 },
                 {
                     title: "스킬 태그 & 스킬 정보",
-                    summary: "스킬 효과 태그 + 상세 팝업으로 정보 탐색 UX 개선",
+                    summary: "스킬 효과 정보를 태그 기반 구조로 정리해 다양한 UI에서 동일한 기준으로 재사용 가능한 정보 시스템 구축",
                     media: [
                         {type: "image", src: `${IMG}/character_skill1.jpg`, alt: "스킬 설명 팝업"},
                         {type: "image", src: `${IMG}/character_skill_tooltip.jpg`, alt: "스킬 태그 / 상세"},
@@ -701,7 +704,7 @@ const ozRewrite: ProjectData = {
                         "선택 캐릭터 1명만 로드 → 변경 시 이전 영상 해제 방식으로 개선",
                         "영상↔배너 전환이 어색한 부분은 UI 팀과 협업해 전환 연출 추가",
                     ],
-                    notionHref: "#",
+                    notionHref: "https://www.notion.so/OZ-Rewrite-2ff7c7e6db098058b74adc5226909065?source=copy_link#2ff7c7e6db098081bc76d394e355ae9b",
                 },
                 {
                     title: "소환 연출 흐름",
@@ -720,7 +723,7 @@ const ozRewrite: ProjectData = {
                         "전환 이질감 해소를 위해 Fade 단계 도입",
                         "특정 단계에서 Skip이 발생해도 흐름이 끊기지 않도록 전체 조정",
                     ],
-                    notionHref: "#",
+                    notionHref: "https://www.notion.so/OZ-Rewrite-2ff7c7e6db098058b74adc5226909065?source=copy_link#2ff7c7e6db0980c4a14ae394b84920c6",
                 },
                 {
                     title: "Timeline 기반 연출 툴",
@@ -735,7 +738,7 @@ const ozRewrite: ProjectData = {
                         "Timeline만으로 어려운 Spine 연출을 위한 Custom Timeline 기능 추가",
                         "3성 전조 연출 등 추가 연출을 별도 Timeline로 확장",
                     ],
-                    notionHref: "#",
+                    notionHref: "https://www.notion.so/OZ-Rewrite-2ff7c7e6db098058b74adc5226909065?source=copy_link#2ff7c7e6db0980ec9448deb7f48dd44e",
                 },
                 {
                     title: "연출 리소스 관리",
@@ -745,7 +748,6 @@ const ozRewrite: ProjectData = {
                         "단계 종료 시 불필요 리소스 즉시 해제 구조로 수정",
                         "3성 관련 리소스 Addressables를 Common으로 전환해 다른 콘텐츠에서도 재사용",
                     ],
-                    notionHref: "#",
                 },
             ],
         },
