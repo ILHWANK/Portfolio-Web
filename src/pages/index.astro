@@ -85,7 +85,7 @@ const codeStructure = [
             <h2 class="h2">Web Portfolio Projects</h2>
 
             <p class="muted">
-                실제 프로젝트에서 설계하고 구현한 Core System 구조와 플레이 흐름을 영상과 이미지 중심으로 정리했습니다.
+                Core System 구조와 플레이 흐름을 영상과 이미지 중심으로 정리했으며, 시스템 동작 흐름을 실제 플레이 기준으로 확인할 수 있습니다.
                 UIManager·ResourceManager·TableManager와 같은 Manager 기반 시스템 구조와 Addressables 기반 리소스 관리, UniTask 비동기 흐름이 실제
                 플레이 환경에서 어떻게 동작하는지 확인할 수 있습니다.
             </p>
@@ -124,13 +124,13 @@ const codeStructure = [
                             </li>
                     ))}
                 </ul>
-
             </section>
 
             <div class="spacer"></div>
-            <section class="structure" aria-labelledby=project-media-title">
+            <section class="structure" aria-labelledby="project-media-title">
                 <h2 id="project-media-title" class="h2">Project Media</h2>
-                <p class="muted">Notion 문서에는 설계와 코드 중심으로 정리했으며, Web 포트폴리오는 플레이 흐름과 시스템 동작을 영상·이미지 중심으로 구성했습니다. 카드에서 핵심 결과를 빠르게 확인할 수 있습니다.</p>
+                <p class="muted">Notion 문서에는 설계와 코드 중심으로 정리했으며, Web 포트폴리오는 플레이 흐름과 시스템 동작을 영상·이미지 중심으로 구성했습니다. 카드에서 핵심
+                    결과를 빠르게 확인할 수 있습니다.</p>
                 <div class="cards">
                     {projects.map((p) => (
                             <a class="card" href={`${import.meta.env.BASE_URL}projects/${p.slug}/`}>
