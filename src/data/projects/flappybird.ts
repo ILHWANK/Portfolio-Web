@@ -53,7 +53,7 @@ const flappybird: ProjectData = {
             title: "0. 프로젝트 요약",
             lead: "광고 SDK 연결과 스토어 배포 환경 구성을 함께 검증한 프로젝트입니다.",
             bullets: [
-                "최종 개선일: 2026.03.07",
+                "최종 개선일: 2026.03.05",
                 "Unity 기반 2D 싱글 플레이 게임",
                 "Google Play Console 배포 설정과 Google Mobile Ads SDK를 함께 구성",
                 "Banner / Interstitial 광고 호출 흐름을 게임 진행과 분리하여 관리",

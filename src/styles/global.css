@@ -166,6 +166,20 @@ a {
     gap: 6px;
 }
 
+.cards--vertical {
+    grid-template-columns: 1fr;
+}
+
+.card--vertical {
+    grid-template-columns: 1fr;
+}
+
+    .card--vertical .card__thumb {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
 .tags {
     display: flex;
     flex-wrap: wrap;
