@@ -1,0 +1,14 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ProjectHero from "../../components/ProjectHero.astro";
+import Section from "../../components/Section.astro";
+import flappybird from "../../data/projects/flappybird";
+
+const p = flappybird;
+---
+
+<ProjectLayout title={`프로젝트 | ${p.title}`} description={p.tagline}>
+    <ProjectHero project={p} />
+
+    {p.sections.map((s) => <Section section={s} />)}
+</ProjectLayout>
