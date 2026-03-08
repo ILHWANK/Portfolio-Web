@@ -5,6 +5,24 @@ import "../styles/global.css";
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script is:inline>
+    (() => {
+      const GA_ID = "G-XXXXXXXXXX";
+
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", GA_ID);
+    })();
+  </script>
 </head>
 <body>
 <!-- 🔝 페이지 최상단 앵커 -->
