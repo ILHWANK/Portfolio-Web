@@ -8,17 +8,18 @@ const lwc: ProjectData = {
     slug: "lwc",
     title: "편지와 마녀의 아이 (개인 프로젝트)",
     notionLabel: "상세 코드(Notion)",
-    tagline: "Manager 기반 Core System과 Addressables·비동기 흐름을 직접 설계하고 검증한 Unity 개인 프로젝트",
+    tagline: "Core System 설계부터 Addressables·비동기 구조와 Jenkins CI 기반 Android 빌드 자동화까지 검증한 Unity 개인 프로젝트",
     thumb: {
         src: `${IMG}/lwc.png`,
         alt: "편지와 마녀의 아이 썸네일",
     },
 
     headline: "Manager 기반 Core System과 데이터 중심 구조를 처음부터 설계하고 검증한 Unity 프로젝트",
-    description:
-        "개인 프로젝트 편지와 마녀의 아이(Letters and the Witch’s Child) 는 UI·리소스·데이터·스토리 시스템을 Manager 기반 Core System 구조로 직접 설계하고 검증하기 위해 진행한 프로젝트입니다.\n" +
-        "UIManager, ResourceManager, TableManager, LocalizationManager 등 공통 시스템을 API 형태로 구성하여 기능들이 일관된 방식으로 동작하도록 설계했습니다.\n" +
-        "Addressables 기반 리소스 관리와 UniTask 기반 비동기 흐름을 통해 확장 가능한 구조를 검증했습니다.",
+        description:
+            "개인 프로젝트 편지와 마녀의 아이(Letters and the Witch’s Child) 는 UI·리소스·데이터·스토리 시스템을 Manager 기반 Core System 구조로 직접 설계하고 검증하기 위해 진행한 프로젝트입니다.\n" +
+            "UIManager, ResourceManager, TableManager, LocalizationManager 등 공통 시스템을 API 형태로 구성하여 기능들이 일관된 방식으로 동작하도록 설계했습니다.\n" +
+            "Addressables 기반 리소스 관리와 UniTask 기반 비동기 흐름을 통해 확장 가능한 구조를 검증했습니다.\n" +
+            "또한 Jenkins CI를 통해 Unity BatchMode 기반 Android 빌드 파이프라인을 구축하여 Addressables 빌드·APK 생성 과정을 자동화하고 개발 운영 환경까지 함께 검증했습니다.",
     tags: [
         "Unity",
         "C#",
@@ -29,6 +30,8 @@ const lwc: ProjectData = {
         "Async Programming",
         "Localization",
         "Narrative Tools",
+        "Jenkins CI",
+        "Build Automation",
     ],
 
     sections: [
@@ -54,11 +57,12 @@ const lwc: ProjectData = {
             title: "0. 프로젝트 요약",
             lead: "개인 프로젝트로서 ‘구조 유지’와 ‘확장 가능성’을 플레이 흐름 안에서 검증하고 있습니다.",
             bullets: [
-                "최종 개선일: 2026.02.04",
-                "스토리 중심 2D 싱글 플레이 게임(PC) / Unity 2023.2.20",
+                "최종 개선일: 2026.03.13",
+                "스토리 중심 2D 싱글 플레이 게임(PC) / Unity 2023.2.20 -> Unity 6000.3.10f1",
                 "플레이 흐름(Title→로딩→허브→상호작용→맵 전환→날짜/루틴→갱신)을 기준으로 시스템을 연결",
                 "데이터/이벤트 중심 운영(GameData + CSV Table + MessageSystem)으로 변경 반영 규칙을 통일",
                 "StoryCut(Core~View) 계층 분리로 스토리 표출 확장 기반 확보",
+                "Jenkins CI 기반 Android 빌드 자동화 파이프라인 구축",
             ],
         },
 
@@ -71,8 +75,8 @@ const lwc: ProjectData = {
             title: "1. 프로젝트 개요",
             bullets: [
                 "장르: 2D 싱글 플레이 / 스토리 중심",
-                "플랫폼: PC",
-                "엔진: Unity 2023.2.20",
+                "플랫폼: PC 및 모바일",
+                "엔진: Unity 6000.3.10f1",
                 "사용 기술: C#, Unity UGUI, Addressables, Assembly, UniTask, Yarn Spinner, CSV, TMP",
                 "진행 형태: 개인 프로젝트 (기획·개발 전반 단독)",
             ],
@@ -232,6 +236,36 @@ const lwc: ProjectData = {
                         "관련: StoryDirectorCore / StoryRunnerBehaviour / StoryPresenter / WorldBubbleView / TableManager",
                     ],
                 },
+
+                {
+                    title: "3-6. Jenkins CI 기반 Unity Android 빌드 파이프라인",
+                    summary:
+                        "Jenkins Pipeline과 Unity BatchMode를 연결해 Addressables 빌드부터 APK 생성까지 자동화한 CI 환경을 구축",
+                    impact:
+                        "수동 빌드 절차를 제거하고 Addressables 빌드, Android Target 전환, APK 생성 과정을 파이프라인으로 고정해 빌드 재현성과 운영 효율을 개선",
+                    media: [
+                        {
+                            type: "image",
+                            src: `${IMG}/jenkins_build.png`,
+                            alt: "Jenkins Android Build 결과",
+                        },
+                    ],
+                    links: [
+                        {
+                            label: "관련 내용(Notion)",
+                            href: "https://www.notion.so/Project-LWC-2026-02-18-2ce7c7e6db098009a8b4c7b579e4f103?source=copy_link#3227c7e6db09807e9faed061d0c47817",
+                            kind: "code",
+                        },
+                    ],
+                    points: [
+                        "Unity BatchMode + CommandLine Build 방식으로 Jenkins에서 Android APK 자동 생성",
+                        "Addressables Clean → Build → Player Build 순서를 파이프라인으로 고정",
+                        "Keystore 검증 단계를 추가해 서명 오류를 사전에 차단",
+                        "APK와 Unity 빌드 로그를 Jenkins 아티팩트로 자동 보관",
+                        "파일명에 Version / VersionCode 포함 규칙 적용으로 빌드 이력 관리",
+                        "관련: Jenkins Pipeline / AndroidBuild.cs / Addressables Build",
+                    ],
+                },
             ],
         },
 
@@ -285,6 +319,7 @@ const lwc: ProjectData = {
                 "ResourceManager + Addressables: 로드/캐시/해제 전략을 플레이 흐름에서 검증",
                 "CSV Table + GameData: 데이터 변경이 UI/플레이/스토리 표출에 자연스럽게 반영되도록 규칙 통일",
                 "StoryCut Core~View 분리: 타입 확장과 연출 확장에 대응 가능한 기반 확보",
+                "Jenkins CI 기반 Android 빌드 자동화로 Addressables 빌드·APK 생성 과정을 파이프라인으로 고정",
             ],
         },
 
