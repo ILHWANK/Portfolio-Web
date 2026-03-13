@@ -8,7 +8,7 @@ const flappybird: ProjectData = {
     slug: "flappybird",
     title: "FlappyBird (광고 SDK · Google Play 배포 구성)",
     notionLabel: "상세 코드(Notion)",
-    tagline: "Unity 2D 게임에 Google Mobile Ads SDK와 Google Play 배포 설정을 연동해 최소 수익화 파이프라인을 구성한 프로젝트",
+    tagline: "Unity 2D 게임에 Google Mobile Ads SDK와 Google Play 배포 설정을 연동해 광고 수익화와 배포 파이프라인을 구성한 프로젝트",
     thumb: {
         src: `${IMG}/flappybird.png`,
         alt: "FlappyBird 썸네일",

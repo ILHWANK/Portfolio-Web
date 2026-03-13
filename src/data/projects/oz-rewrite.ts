@@ -7,7 +7,7 @@ const VID = `${ROOT}/video`;
 const ozRewrite: ProjectData = {
     slug: "oz-rewrite",
     title: "OZ:Rewrite (실무 프로젝트)",
-    tagline: "라이브 서비스에서 확장 가능한 UI·리소스·비동기 흐름을 '시스템 단위'로 구조화하고 운영한 Unity 클라이언트 개발 경험",
+    tagline: "라이브 서비스 환경에서 UI·리소스·비동기 흐름을 시스템 단위로 구조화하고 운영한 Unity 클라이언트 개발 경험",
     thumb: {
         src: `${IMG}/ozrewrite.jpg`,
         alt: "OZ:Rewrite 썸네일",
