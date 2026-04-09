@@ -8,17 +8,19 @@ const lwc: ProjectData = {
     slug: "lwc",
     title: "편지와 마녀의 아이 (개인 프로젝트)",
     notionLabel: "상세 코드(Notion)",
-    tagline: "Core System 설계부터 Addressables·비동기 구조와 Jenkins CI 기반 Android 빌드 자동화까지 검증한 Unity 개인 프로젝트",
+    tagline: "유저가 직접 체감하는 게임 경험을 중심으로 로딩, 맵 이동, 컷신 연출을 설계하고 구현한 개인 프로젝트",
     thumb: {
         src: `${IMG}/lwc.png`,
         alt: "편지와 마녀의 아이 썸네일",
     },
 
-    headline: "Manager 기반 Core System과 데이터 중심 구조를 처음부터 설계하고 검증한 Unity 프로젝트",
+    headline: "플레이 흐름 안에서 상호작용, 연출, 스토리를 자연스럽게 연결한 Unity 프로젝트",
         description:
-            "개인 프로젝트 편지와 마녀의 아이(Letters and the Witch’s Child) 는 UI·리소스·데이터·스토리 시스템을 Manager 기반 Core System 구조로 직접 설계하고 검증하기 위해 진행한 프로젝트입니다.\n" +
+            "개인 프로젝트 편지와 마녀의 아이(Letters and the Witch’s Child)는 \n" +
+            "플레이 흐름 안에서 상호작용, 스토리 연출, 리소스 로딩이 자연스럽게 이어지도록 구현하기 위해 진행한 프로젝트입니다.\n" +
+            "\n" +
             "UIManager, ResourceManager, TableManager, LocalizationManager 등 공통 시스템을 API 형태로 구성하여 기능들이 일관된 방식으로 동작하도록 설계했습니다.\n" +
-            "Addressables 기반 리소스 관리와 UniTask 기반 비동기 흐름을 통해 확장 가능한 구조를 검증했습니다.\n" +
+            "Addressables 기반 리소스 관리와 UniTask 기반 비동기 흐름을 통해 안정적인 플레이 흐름을 유지할 수 있도록 구성했습니다.\n" +
             "또한 Jenkins CI를 통해 Unity BatchMode 기반 Android 빌드 파이프라인을 구축하여 Addressables 빌드·APK 생성 과정을 자동화하고 개발 운영 환경까지 함께 검증했습니다.",
     tags: [
         "Unity",
@@ -57,7 +59,7 @@ const lwc: ProjectData = {
             title: "0. 프로젝트 요약",
             lead: "개인 프로젝트로서 ‘구조 유지’와 ‘확장 가능성’을 플레이 흐름 안에서 검증하고 있습니다.",
             bullets: [
-                "최종 개선일: 2026.03.13",
+                "최종 개선일: 2026.04.07",
                 "스토리 중심 2D 싱글 플레이 게임(PC) / Unity 2023.2.20 -> Unity 6000.3.10f1",
                 "플레이 흐름(Title→로딩→허브→상호작용→맵 전환→날짜/루틴→갱신)을 기준으로 시스템을 연결",
                 "데이터/이벤트 중심 운영(GameData + CSV Table + MessageSystem)으로 변경 반영 규칙을 통일",
@@ -127,9 +129,10 @@ const lwc: ProjectData = {
                 {
                     title: "3-1. Title → Loading → Fade → Game 진입 (리소스 로드)",
                     summary:
-                        "큐 기반 로딩(함수 등록) + Label 기반 대상 수집 + Fade 연출 연결로 “로딩→연출→진입” 플로우를 통합",
+                        "유저가 게임을 시작할 때, 로딩과 진입 과정이 끊기지 않고 자연스럽게 이어지도록 구성한 플레이 진입 흐름",
                     impact:
-                        "진입 시퀀스를 단일 파이프라인으로 정리해 기능 확장(로드 항목 추가/변경) 시 수정 범위를 줄이고, New/Load 분기에서도 일관된 로딩 경험을 유지",
+                        "초기 진입 시 로딩 대기나 화면 전환에서 오는 이질감을 줄이고,\n" +
+                        "Fade 연출과 연결해 “게임이 시작된다”는 몰입감을 자연스럽게 전달하도록 개선",
                     media: [
                         {type: "image", src: `${IMG}/title_to_load_1.gif`, alt: "전부 로드"},
                         {type: "image", src: `${IMG}/title_to_load_2.gif`, alt: "미 로드"},
@@ -138,10 +141,10 @@ const lwc: ProjectData = {
                         {label: "관련 코드(Notion)", href: "https://www.notion.so/Project-LWC-2026-02-18-2ce7c7e6db098009a8b4c7b579e4f103?source=copy_link#2d37c7e6db09807d8f9de76ae32e44a7", kind: "code"},
                     ],
                     points: [
-                        "LoadingUIController가 로딩 큐(_items) 관리: 함수 기반으로 로드 확장 가능",
+                        "로딩 완료 후 즉시 Fade 연출을 연결해 화면 전환의 이질감을 제거",
+                        "New / Load 상황에 따라 불필요한 대기 없이 바로 플레이로 이어지도록 구성",
+                        "유저 입장에서 “기다림”이 아닌 “자연스러운 시작”으로 느껴지도록 흐름 설계",
                         "Label 기반 Addressables 로딩 대상 수집으로 하드코딩 제거",
-                        "NewGame: 캐시 전체 해제 후 재로드 / LoadGame: 캐시 스킵 + 미로드만 로드",
-                        "로드 완료 직후 FadeOut→FadeIn으로 “로딩→연출→진입”을 하나의 흐름으로 연결",
                         "관련: LoadingUIController / ResourceManager / FadeManager",
                     ],
                 },
@@ -149,9 +152,10 @@ const lwc: ProjectData = {
                 {
                     title: "3-2. MagicBookPopup (메인 허브 UIPopup)",
                     summary:
-                        "허브 팝업 1개 + Content 분리(Inventory/Calendar/Menu)로 역할을 고정하고, PopupData로 진입 탭을 제어",
+                        "플레이 중 필요한 기능(인벤토리, 일정, 옵션 등)에 빠르게 접근할 수 있도록 구성한 허브 UI",
                     impact:
-                        "탭/기능이 늘어도 Popup 구조 변경을 최소화하고, UI 생명주기와 진입 컨텍스트를 안정적으로 관리",
+                        "플레이 흐름을 끊지 않고 필요한 정보를 확인하거나 기능을 사용할 수 있어\n" +
+                        "유저의 행동 흐름을 유지하면서 편의성을 개선",
                     media: [
                         {type: "image", src: `${IMG}/content_inventory.png`, alt: "인벤 토리"},
                         {type: "image", src: `${IMG}/content_calendar.png`, alt: "달력"},
@@ -164,9 +168,10 @@ const lwc: ProjectData = {
                     ],
                     links: [{label: "관련 코드(Notion)", href: "https://www.notion.so/Project-LWC-2026-02-18-2ce7c7e6db098009a8b4c7b579e4f103?source=copy_link#2d37c7e6db098030ac56dd65e03a2b2f", kind: "code"}],
                     points: [
+                        "하나의 UI에서 주요 기능을 빠르게 전환할 수 있어 불필요한 화면 이동 감소",
+                        "플레이 도중 자연스럽게 접근하고 다시 복귀할 수 있는 흐름 유지",
+                        "PopupData로 UI 진입 시 현재 상황에 맞는 탭으로 바로 연결되도록 구성",
                         "Scene에 UI를 상주시켜두지 않고 UIManager가 생성/닫기/정리를 관리",
-                        "PopupData로 ‘어느 탭으로 열지’를 외부에서 결정 → 확장 시 구조 변경 최소화",
-                        "Content는 OnEnter/OnExit로 정리해 탭 전환 안정성 확보",
                         "관련: UIManager / UIMagicBookPopup / InventoryContent / CalendarContent / MenuContent",
                     ],
                 },
@@ -174,9 +179,10 @@ const lwc: ProjectData = {
                 {
                     title: "3-3. 맵 이동 시스템 (Portal/Door + Fade 시퀀스)",
                     summary:
-                        "Door는 의도(MapType)만 전달하고, 전환은 시스템이 처리(FadeOut→Load→Camera→FadeIn) + 맵 단위 로드/해제로 메모리 관리",
+                        "맵 이동 시 끊김 없이 자연스럽게 다음 공간으로 이어지도록 구성한 이동 시스템",
                     impact:
-                        "상호작용 오브젝트와 맵 시스템 결합을 낮추고, 전환 순서 보장으로 UX 안정성을 확보(이전 맵 해제 포함)",
+                        "화면 전환 과정에서의 어색함을 줄이고,\n" +
+                        "Fade와 카메라 이동을 통해 공간이 이어지는 느낌을 강화하여 몰입도를 향상",
                     media: [
                         {type: "image", src: `${IMG}/map_move_1.gif`, alt: "맵 전환(1)"},
                         {type: "image", src: `${IMG}/map_move_2.gif`, alt: "맵 전환(2)"},
@@ -184,9 +190,9 @@ const lwc: ProjectData = {
                     links: [{label: "관련 코드(Notion)", href: "https://www.notion.so/Project-LWC-2026-02-18-2ce7c7e6db098009a8b4c7b579e4f103?source=copy_link#2d37c7e6db0980eebceaf495ee59ed26", kind: "code"}],
                     points: [
                         "상호작용 오브젝트가 맵 시스템을 직접 제어하지 않도록 책임 분리",
-                        "전환 시퀀스 순서 보장: FadeOut→Map Load→Camera Follow→FadeIn",
-                        "이전 맵 리소스 해제 후 다음 맵 로드(맵 단위 메모리 관리)",
-                        "Spot 캐싱으로 배치 로직에 활용",
+                        "이동 시 Fade 연출을 활용해 전환의 이질감 최소화",
+                        "카메라 이동과 캐릭터 위치를 자연스럽게 연결",
+                        "이전 맵을 정리하고 다음 맵을 로드하여 안정적인 플레이 유지(맵 단위 메모리 관리)",
                         "관련: Door / IInteractable / MapSystem / ResourceManager / CameraManager / FadeManager",
                     ],
                 },
@@ -194,9 +200,10 @@ const lwc: ProjectData = {
                 {
                     title: "3-4. 언어 변경 기능 (UI/폰트/Yarn 동기화)",
                     summary:
-                        "언어 변경 이벤트 1회로 UI 텍스트/폰트/Yarn Locale까지 즉시 전환되도록 구성",
+                        "플레이 중 언제든 언어를 변경해도 흐름이 끊기지 않도록 구성한 다국어 시스템",
                     impact:
-                        "런타임 즉시 전환(재시작 없이) + 폰트 정책(Addressables 로드)까지 포함해 다국어 안정성을 확보",
+                        "게임을 재시작하지 않고도 즉시 언어가 반영되어\n" +
+                        "글로벌 유저가 플레이 흐름을 유지한 채 게임을 경험할 수 있도록 개선",
                     media: [
                         {type: "image", src: `${IMG}/localization.gif`, alt: "언어 변경"},
                         {
@@ -207,20 +214,23 @@ const lwc: ProjectData = {
                     ],
                     links: [{label: "관련 코드(Notion)", href: "https://www.notion.so/Project-LWC-2026-02-18-2ce7c7e6db098009a8b4c7b579e4f103?source=copy_link#2f47c7e6db09803cbc37dc408575bd66", kind: "code"}],
                     points: [
-                        "LocalizedText가 LanguageChanged/FontChanged 메시지를 구독해 즉시 갱신",
+                        "UI와 대사가 즉시 변경되어 플레이 흐름이 끊기지 않음",
+                        "언어 변경 후에도 현재 진행 상태 그대로 유지",
+                        "다양한 언어 환경에서도 동일한 플레이 경험 제공",
                         "FontPolicyManager가 언어별 폰트를 Addressables로 로드 후 전역 적용",
-                        "Yarn BuiltinLocalisedLineProvider.LocaleCode 변경으로 대사 즉시 전환",
-                        "GameData에 언어 저장 → 재시작 후에도 유지",
                         "관련: LocalizationManager / LocalizedText / FontPolicyManager / DialogueManager / MessageSystem",
                     ],
                 },
 
                 {
-                    title: "3-5. StoryCut 진행/표출 (Core~View 계층 분리)",
+                    title: "3-5. Story 플레이 흐름",
                     summary:
-                        "테이블 기반(CSV) 컷 데이터를 로드하고, Core는 진행 제어만 담당 / 표출은 Presenter·View로 분리",
+                        "플레이 중 상호작용을 통해 자연스럽게 시작되고,\n" +
+                        "텍스트, 캐릭터, 미디어 연출을 통해 스토리가 이어지도록 구성한 컷신 시스템",
                     impact:
-                        "스토리 표출 방식 추가(타입 확장)와 연출 확장이 가능한 기반을 마련하고, 상호작용 트리거와 느슨한 결합을 유지",
+                        "스토리 연출이 별도의 시스템처럼 분리되지 않고\n" +
+                        "플레이 흐름 안에서 자연스럽게 이어지도록 구성하여\n" +
+                        "캐릭터와 상황에 대한 몰입도를 높이는 경험 제공",
                     media: [
                         {
                             type: "video",
@@ -230,10 +240,11 @@ const lwc: ProjectData = {
                     ],
                     links: [{label: "관련 코드(Notion)", href: "https://www.notion.so/Project-LWC-2026-02-18-2ce7c7e6db098009a8b4c7b579e4f103?source=copy_link#30a7c7e6db0980eab918dfd0aa402f61", kind: "code"}],
                     points: [
-                        "CSV→Dictionary 캐시로 컷 데이터 O(1) 접근, 런타임 조회 비용 최소화",
-                        "RequestStartStoryMessage 기반 시작 트리거로 결합도 완화",
-                        "컷 진입 시 현재 언어(GameData.Language)로 로컬라이즈 텍스트 주입",
-                        "StoryCutType 분기로 출력 전략 확장 가능(현재 WorldBubble 적용)",
+                        "상호작용 또는 이벤트를 통해 StoryCut이 자연스럽게 시작되도록 구성",
+                        "StoryCutAction 단위로 텍스트, 캐릭터, 미디어 연출을 순차적으로 실행",
+                        "WorldBubble을 활용해 캐릭터 위치 기반으로 대사를 표현하여 현장감 강화",
+                        "이미지 및 미디어 연출을 상황에 맞게 조합해 감정 전달을 강화",
+                        "모든 연출 종료 후 카메라와 상태를 원래 플레이 상태로 복귀",
                         "관련: StoryDirectorCore / StoryRunnerBehaviour / StoryPresenter / WorldBubbleView / TableManager",
                     ],
                 },
